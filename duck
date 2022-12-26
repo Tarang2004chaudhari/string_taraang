@@ -1,0 +1,23 @@
+#include<iostream>
+#include<strings.h>
+using namespace std ; 
+int main(){
+string s1;
+getline(cin,s1);
+ if (char(s1[0])=='0')
+ {
+    cout<<"it is not duck";
+    return 0;
+ }
+ 
+for (int i = 1; i <s1.length() ; i++)
+{
+    if(char(s1[i])==('0') || s1[0]==0){
+           cout<<"it is duck"<<endl;
+           return 0;
+    }
+}
+cout<<"it is  not duck";
+
+return 0;
+}
