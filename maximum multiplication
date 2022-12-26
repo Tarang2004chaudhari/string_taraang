@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string.h>
+#include <math.h>
+using namespace std;
+int power(int n,int p){
+    double c;
+    if (p==0)
+    {
+        return 1;
+    }
+    int preivious=power(n,(p-1));
+    c=n*preivious;
+    return c;
+    
+}
+int main()
+{
+
+    int c = 0, l1, l2;
+    string s1;
+    getline(cin, s1);
+    string s2;
+    getline(cin, s2);
+    string s3 = "000000000000000000000000000";
+    int a[400] = {0};
+    int b[200]={0};
+    int g[200]={0};
+    string s4="00000000000000000";
+    l1 = s1.length();
+    l2 = s2.length();
+    int m = max(l1, l2) - 1;
+cout<<m<<endl;
+    for (int i = 0; i < s2.length(); i++)
+    {
+        // c = 0;
+        for (int j = 0; j <s1.length(); j++)
+        {
+            a[m - i] = (s2[i] - '0') * (s1[j] - '0'); 
+            //   cout<<"m"<<a[m-i];
+            if(j!=s1.length()-11){
+                a[m-i]=a[m-i]*(power(10,m-j));
+                // cout<<"hh"<<a[m-i];
+            }
+             b[m-i]=(a[m-i]+b[m-i]) ;
+            if (j == (l1 - 1))
+            {
+            // g[m-i] = b[m - i];
+                cout<<"ans is "<<b[m-i]<<endl;
+                for (int i = 0; i < m; i++)
+                {
+                    b[m-i]=b[m-i]*power(10,m-i);
+                }
+                 cout<<"ans is "<<(b[m-i])<<endl;
+                
+            }
+        }
+    }
+     for (int i = 1; i <= m; i++)
+     {
+       g[i]=b[0]+b[1];
+    //    cout<<g[i]<<endl;
+       if(i==1){
+        b[0]=0;
+       }
+    //    cout<<g[i];
+     }
+    return 0;
+}
